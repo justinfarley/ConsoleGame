@@ -2,6 +2,7 @@ package main_game.player.inventory;
 
 import java.util.ArrayList;
 
+import helpers.Items;
 import main_game.GameLoop;
 import main_game.player.inventory.items.Item;
 import main_game.player.inventory.items.weapons.Weapon;
@@ -55,7 +56,7 @@ public class Inventory {
     public void viewWeapons(){
         ArrayList<String> printedWeapons = new ArrayList<>();
         for(Item i : items){
-            boolean playerHasItemEquipped = GameLoop.getPlayer().getWeapon().equals(i);
+            boolean playerHasItemEquipped = GameLoop.getPlayer().getWeapon().getName().equalsIgnoreCase(i.getName());
             if(i instanceof Weapon && playerHasItemEquipped && !printedWeapons.contains(i.name)){
                 System.out.print("\t-" + i + " (Equipped)\n");
                 printedWeapons.add(i.name);
@@ -64,6 +65,13 @@ public class Inventory {
                 System.out.print("\t-" + i + "\n");
                 printedWeapons.add(i.name);
             }
+        }
+    }
+
+    public void setInventory(String[] inventoryItems) {
+        items = new ArrayList<>();
+        for(String name : inventoryItems){
+            items.add(Items.getItem(name));
         }
     }
 }

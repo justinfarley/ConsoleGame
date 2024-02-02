@@ -31,6 +31,8 @@ public class State {
         actions.add(new Move("Move", GameLoop.getPlayer(), GameLoop.getMap()));
         actions.add(new ViewMap("View Map", GameLoop.getMap()));
         actions.add(new ViewInventory("View Inventory", GameLoop.getPlayer().getInventory()));
+        actions.add(new ViewPlayerStats("Player Stats", GameLoop.getPlayer()));
+        actions.add(new ViewWeaponStats("Weapon Stats", GameLoop.getPlayer()));
         actions.add(new VisitShop("Visit Shop", GameLoop.getPlayer().getInventory()));
         actions.add(new ChangeWeapon("Change Weapon", GameLoop.getPlayer()));
         actions.add(new UseItem("Use Item", GameLoop.getPlayer()));
@@ -91,7 +93,7 @@ public class State {
                 DialogueHelper.sayText("Type the action you would like to perform: ", GameLoop.TEXT_SPEED, false);
                 input = scan.nextLine();
             }
-            selectedAction = hasAction(input);
+            selectedAction = DialogueHelper.getClosestAction(actions, input);
             if(selectedAction == null)
             {
                 DialogueHelper.sayText("Choose a VALID action to take. For a list of actions, type HELP: ", GameLoop.TEXT_SPEED, false);

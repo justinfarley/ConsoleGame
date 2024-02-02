@@ -6,16 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "main_game.Main",
-            "projectName": "Random Shit_1a684fb4"
+            "projectName": "ConsoleGame_3c3987ee"
         }
     ]
 }

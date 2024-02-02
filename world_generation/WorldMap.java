@@ -4,31 +4,35 @@ import main_game.GameLoop;
 import main_game.Main;
 import main_game.player.Experience;
 import main_game.player.Player;
+import save_system.PlayerData;
+import save_system.SaveManager;
 import world_generation.Tile.TileType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 import actions.Move;
 import enemies.*;
 import helpers.Enemies;
+import helpers.Tiles;
 import interactions.IInteractable;
 
 import java.io.*;
 
 public class WorldMap {
-    private Size size;
     private int worldSize; //world will be square, same size x and y
     private Tile[][] map;
     private int numPossibleEnemySpawns;
     private int numPossibleItemPedestalSpawns;
+    private static final int SMALL_SIZE = 20, MEDIUM_SIZE = 50, LARGE_SIZE = 100, XLARGE_SIZE = 150;
     private static final Random RAND = new Random();
     public enum Size{
-        SMALL(20),
-        MEDIUM(50),
-        LARGE(100),
-        XLARGE(150);
+        SMALL(SMALL_SIZE),
+        MEDIUM(MEDIUM_SIZE),
+        LARGE(LARGE_SIZE),
+        XLARGE(XLARGE_SIZE);
 
         int _size;
         Size(int s){
@@ -79,7 +83,9 @@ public class WorldMap {
         for(int i = 0; i < map.length; i++){
             for(int j = 0; j < map[i].length; j++){
                 if(i == 0 || j == 0 || i == map.length - 1 || j == map[i].length - 1){
-                    map[i][j] = new Edge();
+                    Tile t = new Edge();
+                    t.setCoords(i, j);
+                    map[i][j] = t;
                 }
                 else{
                     Tile newTile = Tile.getRandomTile(i, j, this);
@@ -146,7 +152,9 @@ public class WorldMap {
         }
         Move.setMaxSteps(Move.BASE_STEPS * numPossibleEnemySpawns);
         numPossibleItemPedestalSpawns = Experience.POSSIBLE_ITEM_PEDESTAL_SPAWNS[GameLoop.getPlayer().getExperience().getLevel()];
-
+    }
+    public void setWorldSize(int size){
+        worldSize = size;
     }
     /**
      * writes the map to a file. Can be used to update the file whenever changes to the map are made.
@@ -159,7 +167,6 @@ public class WorldMap {
 
         for(int i = 0; i < map.length; i++){
             for(int j = 0; j < map[0].length; j++){
-                writer.append(map[i][j].getValue());
             }
             writer.append("\n");
         }
@@ -177,6 +184,7 @@ public class WorldMap {
             System.out.println();
         }
         updateMapFile();
+        SaveManager.saveGame(new PlayerData(GameLoop.getPlayer()));
     }
     public void updateMapFile(){
         try{
@@ -189,6 +197,7 @@ public class WorldMap {
     }
     public void editMap(int x, int y, Tile t){
         map[x][y] = t;
+        t.setCoords(x, y);
         updateMapFile();
     }
     public Tile[][] getWorldMap(){
@@ -196,11 +205,6 @@ public class WorldMap {
     }
     public Tile getTile(int x, int y){
         return map[x][y];
-    }
-    public Enemy spawnNewEnemy(int x, int y){
-        Enemy newEnemy = Enemy.getRandomEnemy();
-        map[x][y] = newEnemy;
-        return newEnemy;
     }
     private <T extends Tile> ArrayList<Tile> findAllTilesOnMap(Class<T> cls){
         ArrayList<Tile> ret = new ArrayList<>();
@@ -326,5 +330,55 @@ public class WorldMap {
     }
     public void updatePedestalSpawns(){
         numPossibleItemPedestalSpawns = Experience.POSSIBLE_ITEM_PEDESTAL_SPAWNS[GameLoop.getPlayer().getExperience().getLevel()];
+    }
+
+    public int getWorldSize() {
+        return worldSize;
+    }
+
+    public String[][] getMapTileNames(){
+        String[][] arr = new String[worldSize][worldSize];
+        for(int i = 0; i < map.length; i++){
+            for(int j = 0; j < map[i].length; j++){
+                if(map[i][j] instanceof Enemy){
+                    arr[i][j] = "enemy";
+                }
+                else
+                    arr[i][j] = map[i][j].getName();
+            }
+        }
+        return arr;
+    }
+
+    public void setWorldMap(Tile[][] importedMap) {
+        map = Arrays.copyOf(importedMap, importedMap.length);
+
+        switch(importedMap.length){
+            case SMALL_SIZE:
+            numPossibleEnemySpawns = 1;
+            break;
+            case MEDIUM_SIZE:
+            numPossibleEnemySpawns = 2;
+            break;
+            case LARGE_SIZE:
+            numPossibleEnemySpawns = 3;
+            break;
+            case XLARGE_SIZE:
+            numPossibleEnemySpawns = 4;
+            break;
+        }
+
+        Move.setMaxSteps(Move.BASE_STEPS * numPossibleEnemySpawns);
+        numPossibleItemPedestalSpawns = Experience.POSSIBLE_ITEM_PEDESTAL_SPAWNS[GameLoop.getPlayer().getExperience().getLevel()];
+    }
+
+    public Tile[][] convertNamesToTiles(String[][] mapOfNames) {
+        Tile[][] arr = new Tile[mapOfNames.length][mapOfNames[0].length];
+        for(int i = 0; i < mapOfNames.length; i++){
+            for(int j = 0; j < mapOfNames.length; j++){
+                arr[i][j] = Tiles.getTileByName(mapOfNames[i][j], i, j);
+            }
+        }
+        return arr;
     }
 }

@@ -12,7 +12,8 @@ import main_game.player.inventory.items.weapons.Weapon;
 public class Branch extends Weapon{
     private static final int MIN_DAMAGE = 1;
     private static final int MAX_DAMAGE = 3;
-    private static final Range WORTH = new Range(2, 3);
+    private static final Range WORTH = new Range(1, 3);
+    private static final String NAME = "Branch";
     public Branch(String n) {
         super(n, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //1-2 damage
@@ -21,11 +22,11 @@ public class Branch extends Weapon{
 
     @Override
     public String toString() {
-        return (Colors.GREEN + "Stick" + Colors.RESET);
+        return Colors.GREEN + NAME + Colors.RESET;
     }
 
-    public static Stick getPreset() {
-        return new Stick("Stick");
+    public static Branch getPreset() {
+        return new Branch(NAME);
     }
 
 }

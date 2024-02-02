@@ -21,12 +21,11 @@ public class Brick extends Weapon {
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //5-8 damage
         critChance = 0.1;
     }
-    public static PlatedAxe getPreset(){
-        return new PlatedAxe(NAME);
+    public static Brick getPreset(){
+        return new Brick(NAME);
     }
     @Override
     public String toString(){
-        return (Colors.GREEN + NAME + Colors.RESET);
+        return Colors.GREEN + NAME + Colors.RESET;
     }
-
 }

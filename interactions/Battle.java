@@ -1,5 +1,7 @@
 package interactions;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import enemies.*;
@@ -18,9 +20,9 @@ public class Battle {
     private Scanner scan = new Scanner(System.in);
     public static final long BATTLE_TEXT_SPEED = 10;
     private final Option[] BATTLE_OPTIONS = new Option[]{
-        new Fight(this, "Fight"),
-        new UseItem("Item", GameLoop.getPlayer()),
-        new Run(this, "Run"),
+        new Fight(this),
+        new UseItem(GameLoop.getPlayer()),
+        new Run(this),
     };
     public Battle(Enemy enemy, Player player) throws InterruptedException{
         this.enemy = enemy; //ensures we dont use the actual copy of the enemy in the list, always get new preset
@@ -48,7 +50,11 @@ public class Battle {
         DialogueHelper.waitForMillis(500);
         displayBattleOptions();
         String choice = scan.nextLine();
-        Option chosenOption = getOption(choice);
+
+        List<Option> listOfOptions = Arrays.asList(BATTLE_OPTIONS);
+
+        Option chosenOption = DialogueHelper.getClosestAction(listOfOptions, choice);
+
         while(chosenOption == null || !chosenOption.canInvoke()){
             String text = "Please choose a valid option: ";
             if(chosenOption != null && !chosenOption.canInvoke()){
@@ -68,7 +74,7 @@ public class Battle {
         if(ended) return;
 
         //pick random battle option for the enemy and invoke
-        Fight enemyFight = new Fight(this, "Fight");
+        Fight enemyFight = new Fight(this);
         enemyFight.init();
         enemyFight.invoke(false);
         playerTurn();

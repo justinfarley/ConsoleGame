@@ -4,8 +4,9 @@ import interactions.Battle;
 
 public class Run extends Option{
     private Battle battle;
-    public Run(Battle currentBattle, String s){
-        super(s);
+    private static final String NAME = "Run";
+    public Run(Battle currentBattle){
+        super(NAME);
         battle = currentBattle;
     }
 

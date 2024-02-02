@@ -5,11 +5,12 @@ import helpers.Colors;
 public class Edge extends Tile {
 
     private static final char SYMBOL = '#';
+    public static final String NAME = "Edge of World";
 
     public Edge(){
         setValue(SYMBOL);
         tileType = TileType.NOT_WALKABLE;
-        name = "Edge of World";
+        name = NAME;
     }
 
     public String toString(){

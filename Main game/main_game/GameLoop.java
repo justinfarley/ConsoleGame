@@ -2,9 +2,15 @@ package main_game;
 import java.util.*;
 
 import helpers.DialogueHelper;
+import helpers.Items;
+import main_game.player.Experience;
 import main_game.player.Player;
 import main_game.player.inventory.items.weapons.level_0.Stick;
 import main_game.player.inventory.items.weapons.level_0.WoodenSword;
+import save_system.PlayerData;
+import save_system.SaveManager;
+import world_generation.Grass;
+import world_generation.Tile;
 import world_generation.WorldMap;
 import world_generation.WorldMap.Size;
 
@@ -16,6 +22,28 @@ public class GameLoop {
     public static final int TEXT_SPEED  = 15; //in milliseconds
     public GameLoop(){
         state = new State(this);
+    }
+    public void startGame(PlayerData saveData) throws InterruptedException {
+        //manually set all this crap bc the json to object is so strict on types :(
+        player.equipWeapon(Items.getWeapon(saveData.equippedWeaponName));
+        player.setHealth(saveData.health);
+        player.setMaxHealth(saveData.maxHealth);
+        player.setName(saveData.name);
+        player.getExperience().setExp(saveData.currentExp);
+        player.getInventory().setInventory(saveData.inventoryItems);
+        player.getExperience().setLevel(saveData.level);
+        player.getExperience().setMaxExp(Experience.EXP_GOAL_LIST[saveData.level]);
+        player.setCoords(saveData.playerPosition[0], saveData.playerPosition[1]);
+        player.setSpeed(saveData.speed);
+        player.setTileUnderPlayer(new Grass());
+        //load the world map in too from the file
+        map.setWorldSize(saveData.worldSize);
+        Tile[][] ogMap = map.convertNamesToTiles(saveData.mapOfNames);
+        ogMap[saveData.playerPosition[0]][saveData.playerPosition[1]] = player;
+        map.setWorldMap(ogMap);
+        System.out.println(player.getPlayerStatSheet());
+        player.getInventory().viewInventory();
+        tick();
     }
     public void startGame() throws InterruptedException {
         player.equipWeapon(new Stick("Stick"));
@@ -30,8 +58,9 @@ public class GameLoop {
             name = scan.nextLine();
         }
         
-        player.setName(name);
-        
+        //player.setName(name);
+        player.setName(name.toUpperCase());
+
         DialogueHelper.sayTextln("Welcome to the game " + player.getName() + ".", TEXT_SPEED, false);
         //DialogueHelper.waitForMillis(500);
         DialogueHelper.sayTextln("How large would you like to make your world, Small(1), Medium(2), Large(3), or XLarge(4)?", TEXT_SPEED, false);
@@ -42,7 +71,6 @@ public class GameLoop {
         //TODO: remove
         DialogueHelper.sayText("Generating World.....", (long)GameLoop.TEXT_SPEED * answer, true);
         DialogueHelper.sayTextln("Generating World.....", (long)GameLoop.TEXT_SPEED * answer, false);
-        
         tick();
     }
     private Size pickSize(int answer){

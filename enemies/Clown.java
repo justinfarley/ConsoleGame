@@ -5,11 +5,11 @@ import main_game.player.inventory.items.weapons.*;
 import main_game.player.inventory.items.weapons.level_3.WoodenBat;
 
 public class Clown extends Enemy{
-    public static final String NAME = Colors.RED + "Orc" + Colors.RESET;
-    public Clown(String n, double h) {
-        super(n, h);
-        expWorth = 7;
-        health = 10;
+    public static final String NAME = Colors.RED + "Clown" + Colors.RESET;
+    public static final int STARTING_HEALTH = 50;
+    public Clown(String n) {
+        super(n, STARTING_HEALTH);
+        expWorth = 15;
         numMoves = 2;
         speed = 3;
         setWeapon();

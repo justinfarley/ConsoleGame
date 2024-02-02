@@ -16,4 +16,10 @@ public class Range {
 
         return rand.nextInt(min, max);
     } 
+    public int getMin(){
+        return min;
+    }
+    public int getMax(){
+        return max;
+    }
 }

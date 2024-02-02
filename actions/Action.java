@@ -1,8 +1,9 @@
 package actions;
 
+import helpers.INameable;
 import time.Clock;
 
-public abstract class Action {
+public abstract class Action implements INameable{
     protected String name;
     public String cannotInvokeMessage;
     public void invoke() throws InterruptedException{

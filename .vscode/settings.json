@@ -1,0 +1,11 @@
+{
+    "java.dependency.packagePresentation": "hierarchical",
+    "maven.view": "hierarchical",
+    "cmake.configureOnOpen": true,
+    "java.project.referencedLibraries": [
+        "lib/jackson-databind-2.16.1.jar",
+        "lib/jackson-core-2.16.1.jar",
+        "lib/jackson-annotations-2.16.1.jar",
+
+    ]
+}

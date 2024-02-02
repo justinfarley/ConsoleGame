@@ -16,7 +16,7 @@ public class Experience {
     {
         2, 3, 5, 7, 10, 8, 11, 13, 15, 20
     };
-    private static final int[] EXP_GOAL_LIST = 
+    public static final int[] EXP_GOAL_LIST = 
     {
         /*testing*/ 1,1,1,1,1,1,1,1,1,
         /*real*///5, 25, 75, 150, 300, 500, 750, 1000, 1200, 3000
@@ -51,9 +51,12 @@ public class Experience {
             currentAmount += leftovers;
         }
     }
+    public double getExp(){
+        return currentAmount;
+    }
     //show when enemy gets defeated and stuff
     public void showExpBar() throws InterruptedException{
-        int numProgress = (int)((currentAmount / goal) * 100);
+        int numProgress = ((int)((currentAmount / goal) * 100)) >= 1 ? 100 : (int)((currentAmount / goal) * 100);
         int numNoProgress = 100 - numProgress;
         String bar = "";
         bar += "\n" + currentAmount +" Exp |" + Colors.GREEN;
@@ -67,6 +70,22 @@ public class Experience {
         bar += Colors.RESET + "| " + goal + " Exp\n";
         DialogueHelper.sayTextln(bar, 10, false);
         DialogueHelper.waitForMillis(500);
+    }
+    //show when enemy gets defeated and stuff
+    public String getExpBar(){
+        int numProgress = ((int)((currentAmount / goal) * 100)) >= 1 ? 100 : (int)((currentAmount / goal) * 100);
+        int numNoProgress = 100 - numProgress;
+        String bar = "";
+        bar += "\n" + currentAmount +" Exp |" + Colors.GREEN;
+        for(int i = 0; i < numProgress; i++){
+            bar += "=";
+        }
+        bar += Colors.RED;
+        for(int i = 0; i < numNoProgress; i++){
+            bar += ".";
+        }
+        bar += Colors.RESET + "| " + goal + " Exp\n";
+        return bar;
     }
     public int getLevel(){
         return level;
@@ -88,5 +107,14 @@ public class Experience {
     //     }
     //     System.out.println("| " + goal + "\n");
     // }
+    public void setExp(double currentExp) {
+        currentAmount = currentExp;
+    }
+    public void setLevel(int l) {
+        level = l;
+    }
+    public void setMaxExp(int i) {
+        goal = i;
+    }
 
 }

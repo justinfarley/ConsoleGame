@@ -7,8 +7,9 @@ import main_game.player.inventory.items.weapons.level_0.Stick;
 public class Goblin extends Enemy {
 
     public static final String NAME = Colors.RED + "Goblin" + Colors.RESET;
-    public Goblin(String n, double h) {
-        super(n, h);
+    public static final int STARTING_HEALTH = 5;
+    public Goblin(String n) {
+        super(n, STARTING_HEALTH);
         expWorth = 2;
         numMoves = 1;
         speed = 1;

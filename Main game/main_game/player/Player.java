@@ -5,7 +5,6 @@ import helpers.Colors;
 import helpers.DialogueHelper;
 import main_game.player.inventory.Inventory;
 import main_game.player.inventory.items.weapons.Weapon;
-import main_game.player.inventory.items.weapons.level_0.Stick;
 import world_generation.Tile;
 
 public class Player extends Tile{
@@ -24,8 +23,6 @@ public class Player extends Tile{
         this.position = Arrays.copyOf(position, 2);
         setValue(SYMBOL);
         exp = new Experience(this);
-        Stick stick = new Stick("Stick");
-
     }   
     /**
      * used with potions and other items NOT on level up
@@ -97,9 +94,10 @@ public class Player extends Tile{
         if(!inventory.getItems().contains(w))
             inventory.addItem(w);
     }
-    public double getHealth(){
+    public int getHealth(){
         return health;
     }
+
     /**
      * gets the exp object for levelling up and increases exp
      * @return
@@ -110,7 +108,23 @@ public class Player extends Tile{
     public void displayHealth() throws InterruptedException{
         DialogueHelper.sayTextln("You now have " + health + "/" + maxHealth + " health!", SYMBOL, false);
     }
-    public double getMaxHealth() {
+    public int getMaxHealth() {
         return maxHealth;
+    }
+    public String getPlayerStatSheet(){
+        String stats = "";
+        stats += getName() + "'s Stats:\n\t";
+        stats += "Level: " + getExperience().getLevel() + "\n\t";
+        stats += "Health: " + health + " / " + maxHealth + "\n\t";
+        stats += "Speed: " + speed + "\n\t";
+        stats += "Current Weapon: " + getWeapon() + "\n\t";
+        stats += "Experience: \n" + getExperience().getExpBar();
+        return stats;
+    }
+    public void setHealth(int h) {
+        health = h;
+    }
+    public void setMaxHealth(int m) {
+        maxHealth = m;
     }
 }

@@ -15,18 +15,18 @@ public class IronHammer extends Weapon {
     private static final int MIN_DAMAGE = 4;
     private static final int MAX_DAMAGE = 8;
     private static final Range WORTH = new Range(4, 6);
-
+    private static final String NAME = "Iron Hammer";
     public IronHammer(String n) {
         super(n, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //4-7 damage
         critChance = 0.2;
     }
     public static IronHammer getPreset(){
-        return new IronHammer("Iron Hammer");
+        return new IronHammer(NAME);
     }
     @Override
     public String toString(){
-        return (Colors.GREEN + "Iron Hammer" + Colors.RESET);
-    }
+        return Colors.GREEN + NAME + Colors.RESET;
 
+    }
 }

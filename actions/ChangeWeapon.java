@@ -25,12 +25,14 @@ public class ChangeWeapon extends Action {
         DialogueHelper.sayText("Enter choice: ", 20, false);
         String weaponName = scan.nextLine();
 
-        for(Item i : player.getInventory().getItems()){
-            if(i.name.equalsIgnoreCase(weaponName) && i instanceof Weapon && !player.getWeapon().equals(i)){
-                player.equipWeapon((Weapon)i);
-                DialogueHelper.sayTextln("Successfully equipped " + i.name + "!", 20, false);
-                break;
-            }
+        Weapon w = (Weapon)DialogueHelper.getClosestAction(player.getInventory().getItems(), weaponName);
+
+        if(player.getWeapon().getName().equalsIgnoreCase(w.getName())){
+            DialogueHelper.sayTextln("You already have " + w + " equipped!", 20, false);
+        }
+        else if(!player.getWeapon().getName().equalsIgnoreCase(w.getName())){
+            player.equipWeapon(w);
+            DialogueHelper.sayTextln("Successfully equipped " + w + "!", 20, false);
         }
     }
 

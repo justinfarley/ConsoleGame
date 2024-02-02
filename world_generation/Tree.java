@@ -9,12 +9,13 @@ public class Tree extends Tile{
     public static final int ALLOWED_NUM_TREES_IN_RADIUS = 5;
     public static final double SPAWN_CHANCE = 0.2;
     public static final char SYMBOL = '|';
+    public static final String NAME = "Tree";
 
 
     public Tree(){
         setValue(SYMBOL);
         tileType = TileType.NOT_WALKABLE;
-        name = "Tree";
+        name = NAME;
     }
     public static boolean rollTile(){
         Random random = new Random();

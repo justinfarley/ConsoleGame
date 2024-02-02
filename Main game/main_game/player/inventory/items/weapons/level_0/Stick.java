@@ -12,6 +12,7 @@ import main_game.player.inventory.items.weapons.Weapon;
 public class Stick extends Weapon{
     private static final int DAMAGE = 1;
     private static final Range WORTH = new Range(1, 2);
+    private static final String NAME = "Stick";
     public Stick(String n) {
         super(n, WORTH);
         damageRange = new Range(DAMAGE, DAMAGE + 1); //1 damage
@@ -19,10 +20,9 @@ public class Stick extends Weapon{
     }
 
     @Override
-    public String toString() {
-        return (Colors.GREEN + "Stick" + Colors.RESET);
+    public String toString(){
+        return Colors.GREEN + NAME + Colors.RESET;
     }
-
     public static Stick getPreset() {
         return new Stick("Stick");
     }

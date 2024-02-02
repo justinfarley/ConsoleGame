@@ -131,11 +131,13 @@ public abstract class Enemy extends Tile implements IInteractable{
 
         switch (type){
             case GOBLIN:
-            return new Goblin(Goblin.NAME, 5);
+            return new Goblin(Goblin.NAME);
             case ORC:
-            return new Clown(Clown.NAME, 10);
+            return new Orc(Orc.NAME);
+            case PLANT:
+            return new ViciousPlant(ViciousPlant.NAME);
             default:
-            return new Clown(Clown.NAME, 10);                
+            return new Clown(Clown.NAME);                
         }
         
     }

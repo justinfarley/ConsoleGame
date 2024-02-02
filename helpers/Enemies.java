@@ -45,7 +45,7 @@ public class Enemies {
      */
     public static final Class<?>[] ENEMYCLASSES = new Class[]
     {
-        Clown.class,
+        Orc.class,
         Goblin.class,
         ViciousPlant.class,
         Clown.class,

@@ -11,9 +11,10 @@ import main_game.player.inventory.items.consumables.Consumable;
 public class UseItem extends Option {
     private Player player;
     private Scanner scan = new Scanner(System.in);
-    public UseItem(String n, Player player){
-        super(n);
-        name = n;
+    private static final String NAME = "Item";
+    
+    public UseItem(Player player){
+        super(NAME);
         cannotInvokeMessage = "You don't have any consumables in your inventory! Try again: ";
         this.player = player;
     }

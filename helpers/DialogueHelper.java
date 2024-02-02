@@ -1,6 +1,10 @@
 package helpers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import actions.Action;
 
 public final class DialogueHelper {
 
@@ -65,5 +69,21 @@ public final class DialogueHelper {
         for(int i = 0; i < text.length(); i++){ //moves cursor back
             System.out.print("\b"); 
         }
+    }
+    public static <T extends INameable> T getClosestAction(List<T> options, String input)
+    {
+        input = input.toLowerCase();
+        for(T option : options){
+            if(option.getName().toLowerCase().startsWith(input) || option.getName().toLowerCase().equals(input)){
+                return option;
+            }
+        }
+        if(input.length() <= 2) return null;
+        for(T option : options){
+            if(option.getName().toLowerCase().contains(input) || option.getName().toLowerCase().equals(input)){
+                return option;
+            }
+        }
+        return null;
     }
 }

@@ -25,7 +25,6 @@ public class BrassKnuckles extends Weapon {
     }
     @Override
     public String toString(){
-        return (Colors.GREEN + NAME + Colors.RESET);
+        return Colors.GREEN + NAME + Colors.RESET;
     }
-
 }

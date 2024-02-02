@@ -8,8 +8,9 @@ import main_game.player.inventory.items.weapons.level_1.BrassKnuckles;
 public class ViciousPlant extends Enemy {
 
     public static final String NAME = Colors.RED + "Vicious Plant" + Colors.RESET;
-    public ViciousPlant(String n, double h) {
-        super(n, h);
+    public static final int STARTING_HEALTH = 25;
+    public ViciousPlant(String n) {
+        super(n, STARTING_HEALTH);
         expWorth = 2;
         numMoves = 1;
         speed = 1;

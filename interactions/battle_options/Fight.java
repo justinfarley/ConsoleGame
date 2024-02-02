@@ -1,6 +1,7 @@
 package interactions.battle_options;
 
 import javax.print.attribute.standard.DialogOwner;
+import javax.print.attribute.standard.MediaSize.NA;
 
 import enemies.Enemy;
 import helpers.DialogueHelper;
@@ -14,8 +15,9 @@ public class Fight extends Option {
     private Enemy enemy;
     private Inventory playerInventory;
     private boolean initialized = false;
-    public Fight(Battle currentBattle, String s){
-        super(s);
+    private static final String NAME = "Fight";
+    public Fight(Battle currentBattle){
+        super(NAME);
         battle = currentBattle;
         cannotInvokeMessage = "You don't have a weapon! Pick a new option: ";
     }

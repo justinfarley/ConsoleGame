@@ -13,6 +13,7 @@ import main_game.player.inventory.items.weapons.level_1.BrassKnuckles;
 import main_game.player.inventory.items.weapons.level_1.IronHammer;
 import main_game.player.inventory.items.weapons.level_2.Brick;
 import main_game.player.inventory.items.weapons.level_2.PlatedAxe;
+import main_game.player.inventory.items.weapons.level_3.Gambler;
 import main_game.player.inventory.items.weapons.level_3.WoodenBat;
 
 public class Items {
@@ -66,16 +67,20 @@ public class Items {
         PlatedAxe.getPreset(),
         BrassKnuckles.getPreset(),
         Brick.getPreset(),
+        WoodenBat.getPreset(),
     };
 
     protected static final Weapon[] ALL_WEAPONS = 
     {
         Stick.getPreset(),
+        Branch.getPreset(),
         WoodenSword.getPreset(),
         IronHammer.getPreset(),
         PlatedAxe.getPreset(),
         BrassKnuckles.getPreset(),
         Brick.getPreset(),
+        Gambler.getPreset(),
+        WoodenBat.getPreset(),
     };
     /**
      * 
@@ -90,6 +95,14 @@ public class Items {
     public static Weapon getRandomWeapon(){
         return ALL_WEAPONS[RAND.nextInt(ALL_WEAPONS.length)];
     }
+    public static Weapon getWeapon(String name){
+        for(Weapon w : ALL_WEAPONS){
+            if(w.name.equalsIgnoreCase(name)){
+                return w;
+            }
+        }
+        return null;
+    }
     /**
      * get random ITEM (includes weapons) from the given level
      * @param l players level
@@ -101,4 +114,12 @@ public class Items {
     // public static Consumable getRandomConsumable(){
     //     return ALL_CONSUMABLES[RAND.nextInt(ALL_CONSUMABLES.length)];
     // }
+    public static Item getItem(String name) {
+        for(Item w : ALL_ITEMS){
+            if(w.name.equalsIgnoreCase(name)){
+                return w;
+            }
+        }
+        return null;
+    }
 }
