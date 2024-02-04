@@ -25,7 +25,7 @@ public class SaveManager {
             File f = new File(PATH);
             mapper.writeValue(f, dataToSave);
          } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
          }
     }
     public static PlayerData loadGame(){
@@ -36,7 +36,7 @@ public class SaveManager {
             return mapper.readValue(f, PlayerData.class);
         }
         catch(Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         }
     }

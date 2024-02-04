@@ -1,5 +1,6 @@
 package actions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -25,22 +26,19 @@ public class UseItem extends Action {
     }
     @Override
     public void invoke() throws InterruptedException {
-        DialogueHelper.sayText("What would you like to switch your weapon to?\n", 0, false);
+        DialogueHelper.sayText("What would you like to use?\n", 0, false);
+        ArrayList<Item> thingsToChooseFrom = new ArrayList<>();
         for(Item i : player.getInventory().getItems()){
             if(i instanceof Consumable){
                 System.out.print("\t-" + i + "\n");
+                thingsToChooseFrom.add(i);
             }
         }
         DialogueHelper.sayText("Enter choice: ", 20, false);
-        String consumableName = scan.nextLine();
+        String choice = scan.nextLine();
 
-        Item[] arr = (Item[])Arrays.copyOf(player.getInventory().getItems().toArray(), player.getInventory().getItems().size());
-        
-        for(Item i : arr){
-            if(i.name.equalsIgnoreCase(consumableName) && i instanceof Consumable){
-                ((Consumable)i).use();
-            }
-        }
+        Consumable consumable = (Consumable)DialogueHelper.getClosestAction(thingsToChooseFrom, choice);
+
+        consumable.use();
     }
-    
 }

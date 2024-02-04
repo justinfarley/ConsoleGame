@@ -7,8 +7,8 @@ import helpers.Range;
 import main_game.player.inventory.items.weapons.Weapon;
 
 /**
- * Damage: 4-5
- * Crit: 0.2
+ * Damage: 4-7
+ * Crit: 0.05
  * Worth: 4-5
  */
 public class IronHammer extends Weapon {
@@ -19,7 +19,7 @@ public class IronHammer extends Weapon {
     public IronHammer(String n) {
         super(n, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //4-7 damage
-        critChance = 0.2;
+        critChance = 0.05;
     }
     public static IronHammer getPreset(){
         return new IronHammer(NAME);

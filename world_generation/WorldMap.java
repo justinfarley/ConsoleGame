@@ -46,9 +46,7 @@ public class WorldMap {
         Move.onPlayerMoved.addListener(() -> rollEnemySpawn(numPossibleEnemySpawns));
         Experience.onLevelUp.addListener(() -> 
         {
-            
-            rollItemPedestalSpawn(numPossibleItemPedestalSpawns);
-
+            rollItemPedestalSpawn(numPossibleItemPedestalSpawns, ItemPedestal.LEVEL_UP_SPAWN_CHANCE);
         });
     }
 
@@ -243,10 +241,10 @@ public class WorldMap {
         return count;
     }
     //subscribes this method to the onPlayerMove event at start
-    private void rollItemPedestalSpawn(int numSpawnAttempts){
+    public void rollItemPedestalSpawn(int numSpawnAttempts, double spawnChance){
         if(numSpawnAttempts == 0) return;
         //every time player moves theres a 20% chance for an enemy to spawn.
-        double pedestalSpawnChance = ItemPedestal.LEVEL_UP_SPAWN_CHANCE;
+        double pedestalSpawnChance = spawnChance;
         double num = RAND.nextDouble();
         ArrayList<Tile> grassTiles = findAllTilesOnMap(Grass.class);
 
@@ -259,7 +257,7 @@ public class WorldMap {
             pedestal.setCoords(tilePos[0], tilePos[1]);
             map[tilePos[0]][tilePos[1]] = pedestal;
         }
-        rollItemPedestalSpawn(numSpawnAttempts - 1);
+        rollItemPedestalSpawn(numSpawnAttempts - 1, spawnChance);
     }
     //subscribes this method to the onPlayerMove event at start
     private void rollEnemySpawn(int numSpawnAttempts){
@@ -273,7 +271,7 @@ public class WorldMap {
 
         if(num <= enemySpawnChance){
             //spawn succeeds, replace one of the grass randomly with an enemy
-            Enemy enemy = Enemy.getRandomEnemy();
+            Enemy enemy = Enemies.getRandomEnemy();
             int upperBound = grassTiles.size();
             Tile tile = grassTiles.get(RAND.nextInt(upperBound));
             enemy.setTileUnder(tile);

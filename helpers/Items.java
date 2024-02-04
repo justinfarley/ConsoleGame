@@ -3,18 +3,14 @@ package helpers;
 import java.util.Random;
 
 import main_game.player.inventory.items.*;
-import main_game.player.inventory.items.consumables.AttackPotion;
-import main_game.player.inventory.items.consumables.SimplePotion;
+import main_game.player.inventory.items.consumables.*;
 import main_game.player.inventory.items.weapons.*;
-import main_game.player.inventory.items.weapons.level_0.Branch;
-import main_game.player.inventory.items.weapons.level_0.Stick;
-import main_game.player.inventory.items.weapons.level_0.WoodenSword;
-import main_game.player.inventory.items.weapons.level_1.BrassKnuckles;
-import main_game.player.inventory.items.weapons.level_1.IronHammer;
-import main_game.player.inventory.items.weapons.level_2.Brick;
-import main_game.player.inventory.items.weapons.level_2.PlatedAxe;
-import main_game.player.inventory.items.weapons.level_3.Gambler;
-import main_game.player.inventory.items.weapons.level_3.WoodenBat;
+import main_game.player.inventory.items.weapons.level_0.*;
+import main_game.player.inventory.items.weapons.level_1.*;
+import main_game.player.inventory.items.weapons.level_2.*;
+import main_game.player.inventory.items.weapons.level_3.*;
+import main_game.player.inventory.items.weapons.level_4.*;
+import main_game.player.inventory.items.weapons.level_5.*;
 
 public class Items {
 
@@ -33,20 +29,49 @@ public class Items {
     protected static final Item[] LEVEL_1 = 
     {
         BrassKnuckles.getPreset(),
+        WoodenSword.getPreset(),
         IronHammer.getPreset(),
+        FrozenSausage.getPreset(),
         SimplePotion.getPreset(),
-
+        BowAndArrow.getPreset(),
     };
     protected static final Item[] LEVEL_2 = 
     {
+        SimplePotion.getPreset(),
+        BrassKnuckles.getPreset(),
         PlatedAxe.getPreset(),
         Brick.getPreset(),
-        SimplePotion.getPreset(),
+        RustedSpear.getPreset(),
+        MediocrePotion.getPreset(),
+        Longbow.getPreset(),
     };
     protected static final Item[] LEVEL_3 = 
     {
-        WoodenBat.getPreset(),
         SimplePotion.getPreset(),
+        RustedSpear.getPreset(),
+        Gambler.getPreset(),
+        Brick.getPreset(),
+        WoodenBat.getPreset(),
+        MediocrePotion.getPreset(),
+        Crossbow.getPreset(),
+    };
+    protected static final Item[] LEVEL_4 = 
+    {
+        Gambler.getPreset(),
+        ToyGun.getPreset(),
+        WoodenBat.getPreset(),
+        MediocrePotion.getPreset(),
+        SharpKey.getPreset(),
+        Club.getPreset(),
+
+    };
+    protected static final Item[] LEVEL_5 = 
+    {
+        MediocrePotion.getPreset(),
+        SharkGun.getPreset(),
+        AdvancedPotion.getPreset(),
+        SharpKey.getPreset(),
+        Club.getPreset(),
     };
     protected static final Item[][] ALL_ITEMS_FOR_LEVEL = 
     {
@@ -54,6 +79,8 @@ public class Items {
         LEVEL_1,
         LEVEL_2,
         LEVEL_3,
+        LEVEL_4,
+        LEVEL_5,
     };
     //ALL ITEMS IN THE GAME
     protected static final Item[] ALL_ITEMS = 
@@ -68,6 +95,18 @@ public class Items {
         BrassKnuckles.getPreset(),
         Brick.getPreset(),
         WoodenBat.getPreset(),
+        Club.getPreset(),
+        SharpKey.getPreset(),
+        SharkGun.getPreset(),
+        ToyGun.getPreset(),
+        Gambler.getPreset(),
+        MetalBat.getPreset(),
+        RustedSpear.getPreset(),
+        FrozenSausage.getPreset(),
+        MediocrePotion.getPreset(),
+        AdvancedPotion.getPreset(),
+        UltraPotion.getPreset(),
+        ExoticPotion.getPreset(),
     };
 
     protected static final Weapon[] ALL_WEAPONS = 
@@ -81,6 +120,16 @@ public class Items {
         Brick.getPreset(),
         Gambler.getPreset(),
         WoodenBat.getPreset(),
+        MetalBat.getPreset(),
+        RustedSpear.getPreset(),
+        FrozenSausage.getPreset(),
+        ToyGun.getPreset(),
+        Club.getPreset(),
+        SharpKey.getPreset(),
+        SharkGun.getPreset(),
+        BowAndArrow.getPreset(),
+        Longbow.getPreset(),
+        Crossbow.getPreset(),
     };
     /**
      * 

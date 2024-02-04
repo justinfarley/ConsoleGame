@@ -16,6 +16,11 @@ public final class DialogueHelper {
     }
     public static void sayTextln(String text, long delayInMillis, boolean clear) throws InterruptedException{
         for(int i = 0; i < text.length(); i++){
+            // String color = matchesColor(text, i);
+            // if(color != null){
+            //     System.out.print(color);
+            //     i += color.length();
+            // }
             System.out.print(text.charAt(i));
             waitForMillis(delayInMillis);
         }
@@ -26,6 +31,19 @@ public final class DialogueHelper {
         else{
             System.out.println();
         }
+    }
+    private static String matchesColor(String text, int index){
+        for(String color : Colors.TEXT_COLORS){
+            try{
+            if(text.substring(index, index + color.length()).equalsIgnoreCase(color)){
+                return color;
+            }
+            }
+            catch(IndexOutOfBoundsException e){
+                return null;
+            }
+        }
+        return null;
     }
     public static void sayTextInColor(String text, String color, long delayInMillis, boolean clear) throws InterruptedException{
         sayText(color, delayInMillis, clear);
@@ -56,6 +74,11 @@ public final class DialogueHelper {
     }
     public static void sayText(String text, long delayInMillis, boolean clear) throws InterruptedException{
         for(int i = 0; i < text.length(); i++){
+            // String color = matchesColor(text, i);
+            // if(color != null){
+            //     System.out.print(color);
+            //     i += color.length();
+            // }
             System.out.print(text.charAt(i));
             waitForMillis(delayInMillis);
         }

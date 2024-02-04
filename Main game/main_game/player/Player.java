@@ -16,8 +16,7 @@ public class Player extends Tile{
     private Weapon equippedWeapon;
     private Inventory inventory = new Inventory();
     private Experience exp;
-    public Player(String name, int health, int[] position){
-        this.name = name;
+    public Player(int health){
         this.health = health;
         maxHealth = health;
         this.position = Arrays.copyOf(position, 2);

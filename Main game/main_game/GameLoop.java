@@ -5,6 +5,7 @@ import helpers.DialogueHelper;
 import helpers.Items;
 import main_game.player.Experience;
 import main_game.player.Player;
+import main_game.player.inventory.items.consumables.SimplePotion;
 import main_game.player.inventory.items.weapons.level_0.Stick;
 import main_game.player.inventory.items.weapons.level_0.WoodenSword;
 import save_system.PlayerData;
@@ -17,7 +18,8 @@ import world_generation.WorldMap.Size;
 public class GameLoop {
     private State state;
     private Scanner scan = new Scanner(System.in);
-    private static Player player = new Player("FlatHippo", 10, new int[]{0, 0});
+    private static final int STARTING_PLAYER_HEALTH = 15;
+    private static Player player = new Player(STARTING_PLAYER_HEALTH);
     private static WorldMap map = new WorldMap();
     public static final int TEXT_SPEED  = 15; //in milliseconds
     public GameLoop(){
@@ -46,7 +48,13 @@ public class GameLoop {
         tick();
     }
     public void startGame() throws InterruptedException {
+        //STARTING WEAPON
         player.equipWeapon(new Stick("Stick"));
+        //STARTING POTIONS
+        player.getInventory().addItem(SimplePotion.getPreset()); 
+        player.getInventory().addItem(SimplePotion.getPreset());
+        player.getInventory().addItem(SimplePotion.getPreset());
+
         DialogueHelper.sayText("Hello traveler! Enter your name here: ", TEXT_SPEED, false);
         String name = scan.nextLine();
         while(name.length() <= 2 || name.length() > 15){

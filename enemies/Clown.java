@@ -9,7 +9,7 @@ public class Clown extends Enemy{
     public static final int STARTING_HEALTH = 50;
     public Clown(String n) {
         super(n, STARTING_HEALTH);
-        expWorth = 15;
+        expWorth = 25;
         numMoves = 2;
         speed = 3;
         setWeapon();

@@ -11,7 +11,7 @@ public class ViciousPlant extends Enemy {
     public static final int STARTING_HEALTH = 25;
     public ViciousPlant(String n) {
         super(n, STARTING_HEALTH);
-        expWorth = 2;
+        expWorth = 12;
         numMoves = 1;
         speed = 1;
         setWeapon();

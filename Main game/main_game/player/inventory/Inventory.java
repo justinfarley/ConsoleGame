@@ -40,10 +40,12 @@ public class Inventory {
             return;
         }
         System.out.println("All items acquired:");
+        boolean shownEquippedItem = false;
         for(Item i : items){
-            boolean playerHasItemEquipped = GameLoop.getPlayer().getWeapon().equals(i);
-            if(playerHasItemEquipped){
+            boolean playerHasItemEquipped = GameLoop.getPlayer().getWeapon().getName().equals(i.getName());
+            if(playerHasItemEquipped && !shownEquippedItem){
                 System.out.print("\t-" + i + " (Equipped)\n");
+                shownEquippedItem = true;
             }
             else{
                 System.out.print("\t-" + i + "\n");

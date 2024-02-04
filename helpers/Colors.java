@@ -21,7 +21,7 @@ public class Colors {
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
     private static final Random RAND = new Random();
-    private static final String[] TEXT_COLORS = 
+    public static final String[] TEXT_COLORS = 
     {
         WHITE, CYAN, PURPLE, BLUE, YELLOW, GREEN, RED, BLACK, RESET
     };

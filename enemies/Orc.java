@@ -9,7 +9,7 @@ public class Orc extends Enemy{
     public static final int STARTING_HEALTH = 10;
     public Orc(String n) {
         super(n, STARTING_HEALTH);
-        expWorth = 7;
+        expWorth = 5;
         health = 10;
         numMoves = 2;
         speed = 3;

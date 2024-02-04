@@ -27,7 +27,7 @@ public class Tiles {
             return i;
         }
         else if(name.equalsIgnoreCase("enemy")){
-            Enemy e = Enemy.getRandomEnemy();
+            Enemy e = Enemies.getRandomEnemy();
             e.setCoords(x, y);
             e.setTileUnder(new Grass());
             return e;

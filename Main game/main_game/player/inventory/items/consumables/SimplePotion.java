@@ -4,8 +4,11 @@ import helpers.DialogueHelper;
 import helpers.Range;
 import main_game.GameLoop;
 
+/**
+ * Range of healing: 10-20
+ */
 public class SimplePotion extends Consumable {
-    Range rangeOfHealing = new Range(4,9);
+    Range rangeOfHealing = new Range(10,21);
     public SimplePotion(String n) {
         super(n);
     }

@@ -55,6 +55,7 @@ public abstract class Enemy extends Tile implements IInteractable{
         DialogueHelper.waitForMillis(1000);
         WorldMap map = GameLoop.getMap();
         map.editMap(position[0], position[1], player); //put player where the enemy used to be to "kill" it.
+        GameLoop.getMap().rollItemPedestalSpawn(1, 0.25); //1 in 4 chance for pedestal to spawn when killing an enemy
     }
     public void move(){
         if(despawned) return;
@@ -124,21 +125,5 @@ public abstract class Enemy extends Tile implements IInteractable{
     public Weapon getWeapon(){
         return weapon;
     }
-    public static Enemy getRandomEnemy(){
-        Random rand = new Random();
-        EnemyType[] arr = Enemies.ENEMIES_PER_LEVEL[GameLoop.getPlayer().getExperience().getLevel()];
-        EnemyType type = arr[rand.nextInt(arr.length)];
 
-        switch (type){
-            case GOBLIN:
-            return new Goblin(Goblin.NAME);
-            case ORC:
-            return new Orc(Orc.NAME);
-            case PLANT:
-            return new ViciousPlant(ViciousPlant.NAME);
-            default:
-            return new Clown(Clown.NAME);                
-        }
-        
-    }
 }

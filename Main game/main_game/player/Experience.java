@@ -14,12 +14,12 @@ public class Experience {
     public static Event onLevelUp = new Event();
     private static final int[] HEALTH_GAINED_PER_LEVEL = 
     {
-        2, 3, 5, 7, 10, 8, 11, 13, 15, 20
+        10, 15, 20, 30, 50, 60, 75, 100, 150, 200
     };
     public static final int[] EXP_GOAL_LIST = 
     {
-        /*testing*/ 1,1,1,1,1,1,1,1,1,
-        /*real*///5, 25, 75, 150, 300, 500, 750, 1000, 1200, 3000
+        /*testing*/// 1,1,1,1,1,1,1,1,1,
+        /*real*/5, 25, 75, 150, 300, 500, 750, 1000, 1200, 3000
     };
     public static final int[] POSSIBLE_ITEM_PEDESTAL_SPAWNS = 
     {
@@ -56,7 +56,7 @@ public class Experience {
     }
     //show when enemy gets defeated and stuff
     public void showExpBar() throws InterruptedException{
-        int numProgress = ((int)((currentAmount / goal) * 100)) >= 1 ? 100 : (int)((currentAmount / goal) * 100);
+        int numProgress = ((int)((currentAmount / goal) * 100)) >= 100 ? 100 : (int)((currentAmount / goal) * 100);
         int numNoProgress = 100 - numProgress;
         String bar = "";
         bar += "\n" + currentAmount +" Exp |" + Colors.GREEN;
@@ -73,7 +73,7 @@ public class Experience {
     }
     //show when enemy gets defeated and stuff
     public String getExpBar(){
-        int numProgress = ((int)((currentAmount / goal) * 100)) >= 1 ? 100 : (int)((currentAmount / goal) * 100);
+        int numProgress = ((int)((currentAmount / goal) * 100)) >= 100 ? 100 : (int)((currentAmount / goal) * 100);
         int numNoProgress = 100 - numProgress;
         String bar = "";
         bar += "\n" + currentAmount +" Exp |" + Colors.GREEN;
