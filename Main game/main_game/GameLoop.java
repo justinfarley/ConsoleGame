@@ -1,6 +1,8 @@
 package main_game;
 import java.util.*;
 
+import enemies.Goblin;
+import helpers.Colors;
 import helpers.DialogueHelper;
 import helpers.Items;
 import main_game.player.Experience;
@@ -11,7 +13,9 @@ import main_game.player.inventory.items.weapons.level_0.WoodenSword;
 import save_system.PlayerData;
 import save_system.SaveManager;
 import world_generation.Grass;
+import world_generation.ItemPedestal;
 import world_generation.Tile;
+import world_generation.Tree;
 import world_generation.WorldMap;
 import world_generation.WorldMap.Size;
 
@@ -49,7 +53,7 @@ public class GameLoop {
     }
     public void startGame() throws InterruptedException {
         //STARTING WEAPON
-        player.equipWeapon(new Stick("Stick"));
+        player.equipWeapon(new Stick());
         //STARTING POTIONS
         player.getInventory().addItem(SimplePotion.getPreset()); 
         player.getInventory().addItem(SimplePotion.getPreset());
@@ -69,7 +73,7 @@ public class GameLoop {
         //player.setName(name);
         player.setName(name.toUpperCase());
 
-        DialogueHelper.sayTextln("Welcome to the game " + player.getName() + ".", TEXT_SPEED, false);
+        DialogueHelper.sayTextln("Welcome to the game " + Colors.YELLOW + player.getName() + Colors.RESET + ".", TEXT_SPEED, false);
         //DialogueHelper.waitForMillis(500);
         DialogueHelper.sayTextln("How large would you like to make your world, Small(1), Medium(2), Large(3), or XLarge(4)?", TEXT_SPEED, false);
         
@@ -79,6 +83,32 @@ public class GameLoop {
         //TODO: remove
         DialogueHelper.sayText("Generating World.....", (long)GameLoop.TEXT_SPEED * answer, true);
         DialogueHelper.sayTextln("Generating World.....", (long)GameLoop.TEXT_SPEED * answer, false);
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("You have spawned into a new world. ", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("You look around and see you are lost in the wilderness.", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("You see lots of " + new Grass().toString() + " GRASS around, as well as " + new Tree().toString() + " TREES.", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("In the distance you see " + new ItemPedestal().toString() + " ITEM PEDESTALS. You can obtain various Items, Weapons, and Consumables from these ancient pedestals.", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("These pedestals will provide better items the higher your " + Colors.PURPLE + "Level" + Colors.RESET + " is.", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("As you wander the wilderness, more and more " + new Goblin("").toString() + " ENEMIES will appear.", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("Kill them for " + Colors.PURPLE + "experience" + Colors.RESET + " in order to " + Colors.PURPLE + "Level Up" + Colors.RESET + ".", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        
+        DialogueHelper.sayTextln("Here are your stats: ", 50, false);
+        System.out.println(player.getPlayerStatSheet());
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("You have started off with three " + Colors.BLUE + "Simple Potions " + Colors.RESET + "as well as a " + Colors.GREEN + "Stick" + Colors.RESET + " to defend yourself.", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        player.getInventory().viewInventory();
+        DialogueHelper.sayTextln("To start off, type HELP for a list of commands.", 50, false);
+        DialogueHelper.waitForMillis(1000);
+        DialogueHelper.sayTextln("Our system will autocomplete your actions for you, so feel free to only type the first few letters, or key part of your entry.", 50, false);
+        DialogueHelper.waitForMillis(1000);
         tick();
     }
     private Size pickSize(int answer){

@@ -1,5 +1,6 @@
 package interactions.battle_options;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import helpers.DialogueHelper;
@@ -27,21 +28,19 @@ public class UseItem extends Option {
     }
     @Override
     public void invoke(boolean invokedByPlayer) throws InterruptedException {
-        DialogueHelper.sayText("What would you like to switch your weapon to?\n", 0, false);
+        DialogueHelper.sayText("What Item would you like to use?\n", 0, false);
+        ArrayList<Item> consumables = new ArrayList<>();
         for(Item i : player.getInventory().getItems()){
             if(i instanceof Consumable){
                 System.out.print("\t-" + i + "\n");
+                consumables.add(i);
             }
         }
+
         DialogueHelper.sayText("Enter choice: ", 20, false);
         String consumableName = scan.nextLine();
-
-        for(Item i : player.getInventory().getItems()){
-            if(i.name.equalsIgnoreCase(consumableName) && i instanceof Consumable){
-                ((Consumable)i).use();
-                break;
-            }
-        }
+        Item i = DialogueHelper.getClosestAction(consumables, consumableName);
+        ((Consumable)i).use();
     }
     @Override
     public void init() {

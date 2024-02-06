@@ -6,11 +6,15 @@ import main_game.GameLoop;
 
 /**
  * Range of healing: 10-20
+ * Price: 10
+ * Worth: 3-5
  */
 public class SimplePotion extends Consumable {
     Range rangeOfHealing = new Range(10,21);
-    public SimplePotion(String n) {
-        super(n);
+    private static final Range WORTH = new Range(3, 6);
+    public SimplePotion(String n, Range worthRange) {
+        super(n, worthRange);
+        price = 10;
     }
 
     @Override
@@ -31,7 +35,7 @@ public class SimplePotion extends Consumable {
         GameLoop.getPlayer().getInventory().removeItem(this);
     }
     public static SimplePotion getPreset(){
-        return new SimplePotion("Simple Potion");
+        return new SimplePotion("Simple Potion", WORTH);
     }
     
 }

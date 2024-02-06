@@ -37,9 +37,9 @@ public class ItemPedestal extends Tile implements IInteractable {
     public void rollItem() throws InterruptedException{
         collected = true;
         DialogueHelper.sayText("The " + Colors.BLUE + NAME + Colors.RESET + " contains: ", 15, false);
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 10; i++){
             for(int j = 0; j < 3; j++){
-                DialogueHelper.sayTextInColor("?", Colors.getRandomColor(), 25, false);
+                DialogueHelper.sayText(Colors.getRandomColor() + "?" + Colors.RESET, 25, false);
             }
             System.out.print("\b\b\b");
         }

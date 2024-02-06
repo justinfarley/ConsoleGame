@@ -1,7 +1,5 @@
 package main_game.player.inventory.items.weapons.level_5;
 
-import java.util.ArrayList;
-
 import helpers.Colors;
 import helpers.Range;
 import main_game.player.inventory.items.weapons.Weapon;
@@ -10,6 +8,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 15-25
  * Crit: 0.4
  * Worth: 10 - 15
+ * Price: 35
  */
 public class MetalBat extends Weapon {
     private static final int MIN_DAMAGE = 15;
@@ -22,6 +21,7 @@ public class MetalBat extends Weapon {
         super(NAME, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //15-25 damage
         critChance = 0.4;
+        price = 35;
     }
     public static MetalBat getPreset(){
         return new MetalBat();

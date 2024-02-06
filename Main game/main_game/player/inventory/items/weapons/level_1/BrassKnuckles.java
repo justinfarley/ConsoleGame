@@ -10,6 +10,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 3-5
  * Crit: 0.25
  * Worth: 4-5
+ * price: 5
  */
 public class BrassKnuckles extends Weapon {
     private static final int MIN_DAMAGE = 3;
@@ -19,7 +20,8 @@ public class BrassKnuckles extends Weapon {
     public BrassKnuckles(String n) {
         super(n, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //3-5 damage
-        critChance = 0.25; //high crit chance
+        critChance = 0.25; 
+        price = 5;
     }
     public static BrassKnuckles getPreset(){
         return new BrassKnuckles(NAME);

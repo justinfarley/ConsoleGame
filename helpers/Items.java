@@ -63,7 +63,6 @@ public class Items {
         MediocrePotion.getPreset(),
         SharpKey.getPreset(),
         Club.getPreset(),
-
     };
     protected static final Item[] LEVEL_5 = 
     {
@@ -73,7 +72,7 @@ public class Items {
         SharpKey.getPreset(),
         Club.getPreset(),
     };
-    protected static final Item[][] ALL_ITEMS_FOR_LEVEL = 
+    public static final Item[][] ALL_ITEMS_FOR_LEVEL = 
     {
         LEVEL_0,
         LEVEL_1,
@@ -107,6 +106,10 @@ public class Items {
         AdvancedPotion.getPreset(),
         UltraPotion.getPreset(),
         ExoticPotion.getPreset(),
+        BowAndArrow.getPreset(),
+        Longbow.getPreset(),
+        Crossbow.getPreset(),
+
     };
 
     protected static final Weapon[] ALL_WEAPONS = 

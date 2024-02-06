@@ -10,6 +10,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 15-25
  * Crit: 0.2
  * Worth: 12 - 15
+ * Price = 40
  */
 public class SharkGun extends Weapon {
     private static final int MIN_DAMAGE = 15;
@@ -22,6 +23,7 @@ public class SharkGun extends Weapon {
         super(NAME, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //15-25 damage
         critChance = 0.2;
+        price = 40;
     }
     public static SharkGun getPreset(){
         return new SharkGun();

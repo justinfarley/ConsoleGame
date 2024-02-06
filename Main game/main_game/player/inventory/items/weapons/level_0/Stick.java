@@ -8,15 +8,17 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 1
  * Crit: 0.05
  * Worth: 1
+ * Price: 1
  */
 public class Stick extends Weapon{
     private static final int DAMAGE = 1;
     private static final Range WORTH = new Range(1, 2);
     private static final String NAME = "Stick";
-    public Stick(String n) {
-        super(n, WORTH);
+    public Stick() {
+        super(NAME, WORTH);
         damageRange = new Range(DAMAGE, DAMAGE + 1); //1 damage
         critChance = 0.05;
+        price = 1;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class Stick extends Weapon{
         return Colors.GREEN + NAME + Colors.RESET;
     }
     public static Stick getPreset() {
-        return new Stick("Stick");
+        return new Stick();
     }
 
 }

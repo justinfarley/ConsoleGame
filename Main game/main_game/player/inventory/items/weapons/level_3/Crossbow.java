@@ -7,12 +7,13 @@ import helpers.Range;
 import main_game.player.inventory.items.weapons.Weapon;
 
 /**
- * Damage: 5-15
+ * Damage: 2-15
  * Crit: 0.5
  * Worth: 1-5
+ * Price: 15
  */
 public class Crossbow extends Weapon {
-    private static final int MIN_DAMAGE = 5;
+    private static final int MIN_DAMAGE = 2;
     private static final int MAX_DAMAGE = 16;
     private static final Range WORTH = new Range(1, 6);
     private static final String NAME = "Crossbow";
@@ -20,6 +21,7 @@ public class Crossbow extends Weapon {
         super(NAME, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE);
         critChance = 0.5; //high crit chance
+        price = 15;
     }
     public static Crossbow getPreset(){
         return new Crossbow();

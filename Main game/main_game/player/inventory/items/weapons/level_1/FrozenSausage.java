@@ -10,6 +10,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 4-5
  * Crit: 0.55
  * Worth: 0-1
+ * Price: 5
  */
 public class FrozenSausage extends Weapon {
     private static final int MIN_DAMAGE = 4;
@@ -20,6 +21,7 @@ public class FrozenSausage extends Weapon {
         super(NAME, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //3-5 damage
         critChance = 0.55; //high crit chance
+        price = 5;
     }
     public static FrozenSausage getPreset(){
         return new FrozenSausage();

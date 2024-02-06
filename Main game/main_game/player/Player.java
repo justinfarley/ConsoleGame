@@ -16,6 +16,7 @@ public class Player extends Tile{
     private Weapon equippedWeapon;
     private Inventory inventory = new Inventory();
     private Experience exp;
+    private int gold = 0;
     public Player(int health){
         this.health = health;
         maxHealth = health;
@@ -112,9 +113,10 @@ public class Player extends Tile{
     }
     public String getPlayerStatSheet(){
         String stats = "";
-        stats += getName() + "'s Stats:\n\t";
+        stats += Colors.YELLOW + getName() + Colors.RESET + "'s Stats:\n\t";
         stats += "Level: " + getExperience().getLevel() + "\n\t";
         stats += "Health: " + health + " / " + maxHealth + "\n\t";
+        stats += "Gold: " + gold + "\n\t";
         stats += "Speed: " + speed + "\n\t";
         stats += "Current Weapon: " + getWeapon() + "\n\t";
         stats += "Experience: \n" + getExperience().getExpBar();
@@ -125,5 +127,14 @@ public class Player extends Tile{
     }
     public void setMaxHealth(int m) {
         maxHealth = m;
+    }
+    public int getGold(){
+        return gold;
+    }
+    public void addGold(int itemSellPrice) {
+        gold += itemSellPrice;
+    }
+    public void removeGold(int itemSellPrice) {
+        gold -= itemSellPrice;
     }
 }

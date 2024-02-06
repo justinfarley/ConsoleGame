@@ -23,7 +23,7 @@ public class Experience {
     };
     public static final int[] POSSIBLE_ITEM_PEDESTAL_SPAWNS = 
     {
-        0, 1, 2, 3, 3, 3, 3, 4, 3, 3, 5
+        0, 2, 3, 4, 5, 6, 6, 7, 7, 7, 10
     };
     public Experience(Player p){
         player = p;

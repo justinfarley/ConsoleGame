@@ -2,6 +2,7 @@ package enemies;
 
 import helpers.Colors;
 import main_game.player.inventory.items.weapons.*;
+import main_game.player.inventory.items.weapons.level_0.Branch;
 import main_game.player.inventory.items.weapons.level_0.Stick;
 
 public class Goblin extends Enemy {
@@ -18,6 +19,7 @@ public class Goblin extends Enemy {
     private static final Weapon[] GOBLIN_WEAPONS = 
     {
         Stick.getPreset(),
+        Branch.getPreset(),
     };
     private void setWeapon(){
         weapon = GOBLIN_WEAPONS[rand.nextInt(GOBLIN_WEAPONS.length)];

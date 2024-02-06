@@ -38,6 +38,10 @@ public class Move extends Action{
     }
     private boolean move() throws InterruptedException{
         String response = scan.nextLine().toLowerCase();
+        while(response.equals("") || (response.charAt(0) != LEFT && response.charAt(0) != RIGHT && response.charAt(0) != UP && response.charAt(0) != DOWN)){
+            DialogueHelper.sayText("You didn't give a valid input! Try again: ", GameLoop.TEXT_SPEED, false);
+            response = scan.nextLine().toLowerCase();
+        }
         if(response.equals("stop")){
             return false;
         }
@@ -58,7 +62,6 @@ public class Move extends Action{
             break;
             default:
                 DialogueHelper.sayText("Not a valid entry, pick a valid entry: ", GameLoop.TEXT_SPEED, false);
-                move();
             break;
         }
         return true;

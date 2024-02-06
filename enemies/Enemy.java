@@ -2,7 +2,6 @@ package enemies;
 
 import java.util.Random;
 
-import actions.Move;
 import event_handling.Listener;
 import helpers.Colors;
 import helpers.DialogueHelper;
@@ -54,7 +53,7 @@ public abstract class Enemy extends Tile implements IInteractable{
         player.getExperience().showExpBar();
         DialogueHelper.waitForMillis(1000);
         WorldMap map = GameLoop.getMap();
-        map.editMap(position[0], position[1], player); //put player where the enemy used to be to "kill" it.
+        map.editMap(position[0], position[1], player); //put player where the enemy used to be to "kill" it.        
         GameLoop.getMap().rollItemPedestalSpawn(1, 0.25); //1 in 4 chance for pedestal to spawn when killing an enemy
     }
     public void move(){

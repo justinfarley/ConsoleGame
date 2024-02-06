@@ -8,6 +8,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 1-3
  * Crit: 0.1
  * Worth: 2-4
+ * Price: 3
  */
 public class WoodenSword extends Weapon {
     private static final int MIN_DAMAGE = 1;
@@ -18,6 +19,7 @@ public class WoodenSword extends Weapon {
         super(n, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //1-3 damage
         critChance = 0.1;
+        price = 3;
     }
     public static WoodenSword getPreset(){
         return new WoodenSword(NAME);

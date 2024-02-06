@@ -25,7 +25,12 @@ public class Colors {
     {
         WHITE, CYAN, PURPLE, BLUE, YELLOW, GREEN, RED, BLACK, RESET
     };
-    
+    public static final String[] ALL_COLORS = 
+    {
+        WHITE, CYAN, PURPLE, BLUE, YELLOW, GREEN, RED, BLACK, RESET, 
+        WHITE_BACKGROUND, CYAN_BACKGROUND, PURPLE_BACKGROUND, BLUE_BACKGROUND,
+        YELLOW_BACKGROUND, GREEN_BACKGROUND, RED_BACKGROUND, BLACK_BACKGROUND,
+    };
     public static String getRandomColor(){
         return TEXT_COLORS[RAND.nextInt(TEXT_COLORS.length)];
     }

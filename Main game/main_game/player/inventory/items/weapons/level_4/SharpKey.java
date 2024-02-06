@@ -10,6 +10,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 7-9
  * Crit: 0.99
  * Worth: 1
+ * Price: 25
  */
 public class SharpKey extends Weapon {
     private static final int MIN_DAMAGE = 7;
@@ -22,6 +23,7 @@ public class SharpKey extends Weapon {
         super(NAME, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //7 damage
         critChance = 0.99;
+        price = 25;
     }
     public static SharpKey getPreset(){
         return new SharpKey();

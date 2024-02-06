@@ -5,9 +5,10 @@ import helpers.Range;
 import main_game.GameLoop;
 
 public class AttackPotion extends Consumable {
+    private static final Range WORTH = new Range(5, 11);
     Range rangeOfDamageIncrease = new Range(1,10);
     public AttackPotion(String n) {
-        super(n);
+        super(n, WORTH);
     }
 
     @Override

@@ -10,6 +10,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 10-15
  * Crit: 0.2
  * Worth: 5
+ * Price: 18
  */
 public class Club extends Weapon {
     private static final int MIN_DAMAGE = 10;
@@ -22,6 +23,7 @@ public class Club extends Weapon {
         super(NAME, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE);
         critChance = 0.2;
+        price = 18;
     }
     public static Club getPreset(){
         return new Club();

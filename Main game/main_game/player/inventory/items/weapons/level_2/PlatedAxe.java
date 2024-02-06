@@ -8,6 +8,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 5-8
  * Crit: 0.1
  * Worth: 7-10
+ * Price: 12;
  */
 public class PlatedAxe extends Weapon {
     private static final int MIN_DAMAGE = 5;
@@ -19,6 +20,7 @@ public class PlatedAxe extends Weapon {
         super(n, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //5-8 damage
         critChance = 0.1;
+        price = 12;
     }
     public static PlatedAxe getPreset(){
         return new PlatedAxe(NAME);

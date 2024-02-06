@@ -6,8 +6,9 @@ import main_game.player.inventory.items.weapons.Weapon;
 
 /**
  * Damage: 5-8
- * Crit: 0.1
+ * Crit: 0.05
  * Worth: 1
+ * Price: 7
  */
 public class Brick extends Weapon {
     private static final int MIN_DAMAGE = 5;
@@ -19,7 +20,8 @@ public class Brick extends Weapon {
     public Brick(String n) {
         super(n, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //5-8 damage
-        critChance = 0.1;
+        critChance = 0.05;
+        price = 7;
     }
     public static Brick getPreset(){
         return new Brick(NAME);

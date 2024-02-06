@@ -21,7 +21,7 @@ public abstract class Weapon extends Item{
     protected Range worthRange;
     private static Random rand = new Random();
     protected Weapon(String n, Range worthRange) {
-        super(n);
+        super(n, worthRange);
         this.worthRange = worthRange;
         worth = worthRange.getNumberInRange();
     }

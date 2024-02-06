@@ -26,7 +26,7 @@ public class ChangeWeapon extends Action {
         String weaponName = scan.nextLine();
 
         Weapon w = (Weapon)DialogueHelper.getClosestAction(player.getInventory().getItems(), weaponName);
-
+        if(w == null) return;
         if(player.getWeapon().getName().equalsIgnoreCase(w.getName())){
             DialogueHelper.sayTextln("You already have " + w + " equipped!", 20, false);
         }

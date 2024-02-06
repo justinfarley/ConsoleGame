@@ -7,12 +7,13 @@ import helpers.Range;
 import main_game.player.inventory.items.weapons.Weapon;
 
 /**
- * Damage: 2-6
+ * Damage: 0-6
  * Crit: 0.5
  * Worth: 1-5
+ * Price: 10
  */
 public class BowAndArrow extends Weapon {
-    private static final int MIN_DAMAGE = 2;
+    private static final int MIN_DAMAGE = 0;
     private static final int MAX_DAMAGE = 7;
     private static final Range WORTH = new Range(1, 6);
     private static final String NAME = "Bow and Arrow";
@@ -20,6 +21,7 @@ public class BowAndArrow extends Weapon {
         super(NAME, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE);
         critChance = 0.5; //high crit chance
+        price = 10;
     }
     public static BowAndArrow getPreset(){
         return new BowAndArrow();

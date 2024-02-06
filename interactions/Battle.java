@@ -62,7 +62,7 @@ public class Battle {
             }
             DialogueHelper.sayText(text, BATTLE_TEXT_SPEED, false);
             choice = scan.nextLine();
-            chosenOption = getOption(choice);
+            chosenOption = DialogueHelper.getClosestAction(listOfOptions, choice);
         }
         chosenOption.init();
         chosenOption.invoke(true);

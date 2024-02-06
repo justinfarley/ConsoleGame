@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-import actions.Move;
 import enemies.*;
 import helpers.Enemies;
 import helpers.Tiles;
 import interactions.IInteractable;
+import actions.Move;
 
 import java.io.*;
 
@@ -262,10 +262,10 @@ public class WorldMap {
     //subscribes this method to the onPlayerMove event at start
     private void rollEnemySpawn(int numSpawnAttempts){
         if(numSpawnAttempts == 0) return;
-        //every time player moves theres a 20% chance for an enemy to spawn.
         int numEnemies = getNumTilesOnMap(Enemy.SYMBOL);
         int numGrass = getNumTilesOnMap(Grass.SYMBOL);
-        double enemySpawnChance = (numGrass + numEnemies) == 0 ? 0.2 : 0.2 - ((double)numEnemies / (numGrass + numEnemies));
+        final double chance = 0.15;
+        double enemySpawnChance = (numGrass + numEnemies) == 0 ? chance : chance - ((double)numEnemies / (numGrass + numEnemies));
         double num = RAND.nextDouble();
         ArrayList<Tile> grassTiles = findAllTilesOnMap(Grass.class);
 

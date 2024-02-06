@@ -8,6 +8,7 @@ import main_game.player.inventory.items.weapons.Weapon;
  * Damage: 1-2
  * Crit: 0.07
  * Worth: 2
+ * Price: 2
  */
 public class Branch extends Weapon{
     private static final int MIN_DAMAGE = 1;
@@ -18,6 +19,7 @@ public class Branch extends Weapon{
         super(n, WORTH);
         damageRange = new Range(MIN_DAMAGE, MAX_DAMAGE); //1-2 damage
         critChance = 0.07;
+        price = 2;
     }
 
     @Override

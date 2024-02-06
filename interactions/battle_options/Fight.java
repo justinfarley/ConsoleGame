@@ -6,12 +6,12 @@ import javax.print.attribute.standard.MediaSize.NA;
 import enemies.Enemy;
 import helpers.DialogueHelper;
 import interactions.Battle;
+import main_game.GameLoop;
 import main_game.player.Player;
 import main_game.player.inventory.Inventory;
 
 public class Fight extends Option {
     private Battle battle;
-    private Player player;
     private Enemy enemy;
     private Inventory playerInventory;
     private boolean initialized = false;
@@ -23,16 +23,14 @@ public class Fight extends Option {
     }
     public void init(){
         initialized = true;
-        enemy = battle.getEnemy();
-        player = battle.getPlayer();
     }
     @Override
     public void invoke(boolean invokedByPlayer) throws InterruptedException {
         if(invokedByPlayer){
-            player.getWeapon().attack(enemy);
+            GameLoop.getPlayer().getWeapon().attack(battle.getEnemy());
         }
         else{
-            enemy.getWeapon().attack(enemy, player);
+            battle.getEnemy().getWeapon().attack(battle.getEnemy(), GameLoop.getPlayer());
         }
     }
     public String toString(){
@@ -41,6 +39,6 @@ public class Fight extends Option {
     @Override
     public boolean canInvoke() {
         if(!initialized) init();
-        return player.getWeapon() != null;
+        return GameLoop.getPlayer().getWeapon() != null;
     }
 }
