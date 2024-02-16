@@ -32,22 +32,27 @@ public class Enemies {
     protected static final EnemyType[] LEVEL_0 = 
     {
         EnemyType.GOBLIN,
+        EnemyType.ORC,
     };
     protected static final EnemyType[] LEVEL_1 = 
     {
         EnemyType.ORC,
+        EnemyType.PLANT,
     };
     protected static final EnemyType[] LEVEL_2 =
     {
         EnemyType.PLANT,
+        EnemyType.CLOWN,
     };
     protected static final EnemyType[] LEVEL_3 =
     {
         EnemyType.CLOWN,
+        EnemyType.GIANT,
     };
     protected static final EnemyType[] LEVEL_4 =
     {
         EnemyType.GIANT,
+        EnemyType.VAMPIRE,
     };
     protected static final EnemyType[] LEVEL_5 =
     {

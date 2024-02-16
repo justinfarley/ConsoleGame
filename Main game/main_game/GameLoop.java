@@ -42,6 +42,7 @@ public class GameLoop {
         player.setCoords(saveData.playerPosition[0], saveData.playerPosition[1]);
         player.setSpeed(saveData.speed);
         player.setTileUnderPlayer(new Grass());
+        player.setGold(saveData.gold);
         //load the world map in too from the file
         map.setWorldSize(saveData.worldSize);
         Tile[][] ogMap = map.convertNamesToTiles(saveData.mapOfNames);

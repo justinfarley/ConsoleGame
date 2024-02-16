@@ -19,6 +19,7 @@ public class PlayerData {
     public double currentExp;
     public int worldSize;
     public String[][] mapOfNames;
+    public int gold;
 
     public PlayerData(){
 
@@ -36,6 +37,7 @@ public class PlayerData {
         inventoryItems = new String[p.getInventory().getItems().size()];
         worldSize = GameLoop.getMap().getWorldSize();
         mapOfNames = GameLoop.getMap().getMapTileNames();
+        gold = GameLoop.getPlayer().getGold();
         for(int i = 0; i < inventoryItems.length; i++){
             inventoryItems[i] = p.getInventory().getItems().get(i).getName();
         }

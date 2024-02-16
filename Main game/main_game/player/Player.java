@@ -137,4 +137,7 @@ public class Player extends Tile{
     public void removeGold(int itemSellPrice) {
         gold -= itemSellPrice;
     }
+    public void setGold(int g) {
+        gold = g;
+    }
 }

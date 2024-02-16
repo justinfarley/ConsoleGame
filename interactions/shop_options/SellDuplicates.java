@@ -34,7 +34,6 @@ public class SellDuplicates extends Option{
 
         String choice = null;
         String result = null;
-
         ArrayList<Item> itemsAbleToBeSold = new ArrayList<>();
         while(result == null || itemsAbleToBeSold.isEmpty()){
             itemsAbleToBeSold = GameLoop.getPlayer().getInventory().getDuplicates();
